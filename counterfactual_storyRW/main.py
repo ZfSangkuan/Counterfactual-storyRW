@@ -102,12 +102,16 @@ def build_sub_graph(aser_kg_conn, dicourse_extractor, seedrule_extractor, text_d
                 
     # Set weight of premise to 1,
     # then flow down the whole DAG to get weights of each node
+    print("start flow down weights")
     for premise_node in list_nodes[0]:
         premise_node.weight = 1
         _flow_down_from_single_node(premise_node, 0, list_nodes, dict_relation)
+    print("premise weight set")
     for i in range(1,4):
         for node in list_nodes[i]:
             _flow_down_from_single_node(node, i, list_nodes, dict_relation)
+    print("check out weights")
+    pprint(list_nodes)
 
     return list_raw_text, list_nodes, dict_relation
 

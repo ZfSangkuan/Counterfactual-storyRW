@@ -2,7 +2,7 @@
 .DS_Store
 
 # tmp file
-.props
+*.props
 
 # data set
 data/*
